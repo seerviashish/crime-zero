@@ -1,0 +1,27 @@
+.Snackbar {
+  left: 8px;
+  right: 8px;
+  display: flex;
+  z-index: 1400;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  top: 8px;
+  border: 1px solid #707070;
+  border-radius: 42px;
+  background-color: #818181;
+  height: 55px;
+  color: #ffb576;
+  font-size: 25px;
+}
+
+.SnackBtn {
+  background: url("../../assets//cancel-24px.svg") no-repeat center #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin: 0 12px;
+  border: none;
+  background-size: 30px;
+  outline: none;
+}
