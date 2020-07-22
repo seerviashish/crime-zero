@@ -35,14 +35,14 @@
   max-height: 200px;
   resize: vertical;
   box-sizing: border-box;
-  padding: 8px;
+  padding: 16px;
   margin: 0 6px 0 17px;
   border-radius: 18px 18px 0px 18px;
   background-color: #adadad;
   border: 1pt solid #4b4b4b;
   outline: none;
-  font-size: 30px;
-  pointer-events: none;
+  font-size: 20px;
+  word-wrap: break-word;
 }
 
 .SmsListView {
