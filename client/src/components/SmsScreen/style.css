@@ -1,0 +1,40 @@
+.SmsScreen {
+  position: relative;
+  background-color: #d1d1d1;
+  height: calc(calc(100% - 462px) + 42px);
+}
+
+.SmsInputField {
+  position: absolute;
+  bottom: calc(42px + 14px);
+  width: 100%;
+  margin: 0px;
+}
+
+.SendBtn {
+  border-radius: 50%;
+  width: 60pt;
+  height: 60pt;
+  margin: 0 6pt;
+  float: right;
+  border: none;
+  background: url("../../assets/send-24px.svg") no-repeat center #4b4b4b;
+  background-size: 40px;
+  outline: none;
+}
+
+.SendBtn:active {
+  filter: invert(0.8);
+}
+
+.SmsInputBox {
+  width: calc(100% - 135px);
+  height: 58pt;
+  margin: 0 6pt 0 17pt;
+  border-radius: 18pt;
+  background-color: #adadad;
+  border: 1pt solid #4b4b4b;
+  outline: none;
+  text-indent: 20pt;
+  font-size: 30pt;
+}

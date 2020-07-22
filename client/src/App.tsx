@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Keypad, { KeypadButtonLabel } from "./components/Keypad";
+import SmsScreen from "./components/SmsScreen";
 
 type State = {
   smsInput: string;
@@ -17,6 +18,7 @@ class App extends React.Component<Props, State> {
   render() {
     return (
       <div className="App">
+        <SmsScreen />
         <Keypad onClick={this.handleKeypadOnClick} />
       </div>
     );
