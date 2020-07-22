@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Keypad, { KeypadButtonLabel } from "./components/Keypad";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+type State = {
+  smsInput: string;
+};
+
+type Props = {};
+class App extends React.Component<Props, State> {
+  readonly state: State = {
+    smsInput: "",
+  };
+  handleKeypadOnClick = (buttonLabel: KeypadButtonLabel) => {
+    console.log(buttonLabel);
+  };
+  render() {
+    return (
+      <div className="App">
+        <Keypad onClick={this.handleKeypadOnClick} />
+      </div>
+    );
+  }
 }
 
 export default App;
