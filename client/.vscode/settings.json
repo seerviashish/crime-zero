@@ -1,0 +1,12 @@
+{
+  "files.exclude": {
+    "**/*.js": { "when": "$(basename).ts" },
+    "**/*.js.map": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  },
+  "editor.formatOnSave": true,
+  "eslint.enable": true,
+  "eslint.packageManager": "yarn"
+}
