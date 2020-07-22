@@ -2,6 +2,7 @@
   position: relative;
   background-color: #d1d1d1;
   height: calc(calc(100% - 462px) + 42px);
+  margin-bottom: -42px;
 }
 
 .SmsInputField {
@@ -13,13 +14,13 @@
 
 .SendBtn {
   border-radius: 50%;
-  width: 60pt;
-  height: 60pt;
-  margin: 0 6pt;
+  width: 60px;
+  height: 60px;
+  margin: 0 6px;
   float: right;
   border: none;
   background: url("../../assets/send-24px.svg") no-repeat center #4b4b4b;
-  background-size: 40px;
+  background-size: 30px;
   outline: none;
 }
 
@@ -28,13 +29,48 @@
 }
 
 .SmsInputBox {
-  width: calc(100% - 135px);
-  height: 58pt;
-  margin: 0 6pt 0 17pt;
-  border-radius: 18pt;
+  width: calc(100% - 120px);
+  height: 58px;
+  margin: 0 6px 0 17px;
+  border-radius: 18px;
   background-color: #adadad;
   border: 1pt solid #4b4b4b;
   outline: none;
-  text-indent: 20pt;
-  font-size: 30pt;
+  text-indent: 20px;
+  font-size: 30px;
+  pointer-events: none;
+}
+
+.SmsListView {
+  height: calc(100% - 170px);
+  padding-top: 30px;
+  max-height: 200px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+ul > li {
+  list-style: none;
+  display: inline-flex;
+  background-color: #4b4b4b;
+  padding: 10px;
+  border-radius: 25px 25px 25px 0;
+  color: white;
+  font-size: 20px;
+  height: 30px;
+}
+
+ul {
+  padding: 0 20px;
+  margin: 5px;
+}
+
+.SmsIcon {
+  height: 20px;
+  width: 20px;
+}
+
+.SmsText {
+  padding-left: 2px;
+  padding-right: 2px;
 }
