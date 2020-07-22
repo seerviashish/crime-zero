@@ -50,7 +50,7 @@ const keypadButtons: KeypadButtonLabel[] = [
   },
   {
     label: "*",
-    text: "",
+    text: "Clear",
   },
   {
     label: "0",

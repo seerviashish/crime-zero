@@ -7,9 +7,10 @@ import "./style.css";
 
 type Props = {
   style?: CSSProperties;
+  smsInput: string;
 };
 
-const SmsScreen: React.FC<Props> = ({ style }) => {
+const SmsScreen: React.FC<Props> = ({ style, smsInput }) => {
   return (
     <div className="SmsScreen" style={{ ...style }}>
       <div className="SmsListView">
@@ -23,7 +24,12 @@ const SmsScreen: React.FC<Props> = ({ style }) => {
         </ul>
       </div>
       <div className="SmsInputField">
-        <input className="SmsInputBox" type="text" />
+        <textarea
+          className="SmsInputBox"
+          rows={5}
+          value={smsInput}
+          readOnly
+        ></textarea>
         <button className="SendBtn"></button>
       </div>
     </div>
