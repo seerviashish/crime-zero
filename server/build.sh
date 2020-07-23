@@ -1,1 +1,2 @@
-docker build -t crime-hero-server:v1.0.0 .
+#!/bin/bash
+docker build -t seerviashish17/crime-zero-server:v1.0.0 .

@@ -1,15 +1,15 @@
 version: "3"
 services:
-  crimehero-server:
-    image: crimehero-server:v1.0.0
+  crime-zero-server:
+    image: seerviashish17/crime-zero-server:v1.0.0
     restart: always
     ports:
       - 3005:3005
     healthcheck:
       test: "exit 0"
     volumes:
-      - crimehero-service-data:/crimehero
+      - crime-zero-service-data:/crimehero
       - ./crimehero/logs:/crimehero/logs:rw
       - ./crimehero/.pm2/logs:/crimehero/.pm2/logs:rw
 volumes:
-  crimehero-service-data:
+  crime-zero-service-data:
