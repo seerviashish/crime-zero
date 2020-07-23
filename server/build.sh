@@ -1,0 +1,1 @@
+docker build -t crimehero-server:v1.0.0 .
