@@ -8,6 +8,7 @@ type State = {
   smsInput: string;
   messageList: Message[];
   appError: AppError;
+  isTouchDevice: boolean;
 };
 
 type AppError = {
@@ -20,8 +21,8 @@ type Props = {};
 export type Message = {
   id: number;
   message: string;
-  sentBy: 0 | 1; // 0 means message sent by user and 1 means message came from server or saviour
-  status: 0 | 1 | 2;
+  sentBy: number; // 0 means message sent by user and 1 means message came from server or saviour
+  status: number;
   /* 
     status 0: message sent
     status 1: message recieved
@@ -40,6 +41,11 @@ const getLabel = (label: string): string => {
   }
   return label;
 };
+
+const isTouchDevice = (): boolean => {
+  return "ontouchstart" in window || navigator.maxTouchPoints > 0;
+};
+
 class App extends React.Component<Props, State> {
   readonly state: State = {
     smsInput: "",
@@ -48,7 +54,12 @@ class App extends React.Component<Props, State> {
       info: "",
     },
     messageList: [],
+    isTouchDevice: false,
   };
+
+  componentDidMount() {
+    this.setState({ isTouchDevice: isTouchDevice() });
+  }
   handleKeypadOnClick = (buttonLabel: KeypadButtonLabel) => {
     this.setState({
       smsInput:
@@ -63,7 +74,7 @@ class App extends React.Component<Props, State> {
   };
 
   validateSmsCode = (sms: string): boolean => {
-    let match = sms.match(/(0 )[0-9]\w+/g);
+    let match = sms.match(/(0 )[2-9]+/g);
     if (match && match.length > 0) {
       let output: string = match.join("").toString();
       return output === sms;
@@ -71,14 +82,18 @@ class App extends React.Component<Props, State> {
     return false;
   };
 
+  getMaxId = (messageList: Message[]): number => {
+    return messageList.reduce(
+      (maxId, message) => (message.id > maxId ? message.id : maxId),
+      0
+    );
+  };
+
   handleSendBtn = async (): Promise<any> => {
     try {
       const { smsInput, messageList } = this.state;
       if (this.validateSmsCode(smsInput)) {
-        let maxId = messageList.reduce(
-          (maxId, message) => (message.id > maxId ? message.id : maxId),
-          Number.MIN_VALUE
-        );
+        let maxId = this.getMaxId(messageList);
         const newMessage: Message = {
           id: maxId + 1,
           message: smsInput,
@@ -86,6 +101,35 @@ class App extends React.Component<Props, State> {
           status: 0,
         };
         this.setState({ messageList: [...messageList, newMessage] });
+        const heroResponse = await fetch(
+          `http://localhost:3005/hero?code=${smsInput}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "x-client-id": "crimehero123",
+            },
+          }
+        );
+        const heroJson = await heroResponse.json();
+        if (heroResponse.ok) {
+          if (!heroJson || (heroJson && !heroJson.hero)) {
+            throw new Error("No hero found");
+          }
+          const heroMessage = {
+            id: maxId + 2,
+            message: heroJson.hero,
+            sentBy: 1,
+            status: 1,
+          };
+          this.setState({
+            messageList: [...this.state.messageList, heroMessage],
+          });
+        } else {
+          throw new Error(
+            heroJson && heroJson.error ? heroJson.error : "Response Error"
+          );
+        }
       } else {
         throw new Error("Please sent correct code.");
       }
@@ -113,7 +157,10 @@ class App extends React.Component<Props, State> {
             onClose={this.handleErrorClear}
           />
         )}
-        <Keypad onClick={this.handleKeypadOnClick} />
+        <Keypad
+          onClick={this.handleKeypadOnClick}
+          isTouchDevice={this.state.isTouchDevice}
+        />
       </div>
     );
   }

@@ -1,9 +1,11 @@
 import React, { CSSProperties } from "react";
+import clsx from "clsx";
 import "./style.css";
 
 type Props = {
   onClick: (buttonLabel: KeypadButtonLabel) => void;
   style?: CSSProperties;
+  isTouchDevice: boolean;
 };
 
 export type KeypadButtonLabel = {
@@ -62,14 +64,14 @@ const keypadButtons: KeypadButtonLabel[] = [
   },
 ];
 
-const Keypad: React.FC<Props> = ({ onClick, style }) => {
+const Keypad: React.FC<Props> = ({ onClick, style, isTouchDevice }) => {
   return (
-    <div className="Keypad" style={{ ...style }}>
+    <div className={"Keypad"} style={{ ...style }}>
       <div className="KeypadBtnContainer">
         {keypadButtons.map((keyLabel, index) => (
           <button
             key={`${index}-key`}
-            className="KeypadBtn"
+            className={isTouchDevice ? "KeypadBtn" : "KeypadHoverBtn"}
             onClick={(e) => {
               onClick(keyLabel);
             }}
