@@ -45,16 +45,14 @@ const getHeroName = code => {
   for (let index = 0; index < codeList.length; index++) {
     const keyValue = keypad[codeList[index]];
     possibleHeros = getPossibleHeros(possibleHeros, keyValue, index);
-    possibleHeros.forEach(d => console.log(d));
   }
-  possibleHeros.forEach(d => console.log(d));
   if (possibleHeros.length > 0) {
     return possibleHeros[0];
   }
 };
 
 const isCodeValid = code => {
-  let match = code.match(/(0 )[2-9]+/g);
+  let match = code.match(/(0 )[2-9]+$/g);
   if (match && match.length > 0) {
     let output = match.join('').toString();
     return output === code;

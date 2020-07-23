@@ -1,1 +1,1 @@
-docker build -t crimehero-server:v1.0.0 .
+docker build -t crime-hero-server:v1.0.0 .
