@@ -1,5 +1,4 @@
 import React, { CSSProperties } from "react";
-import clsx from "clsx";
 import "./style.css";
 
 type Props = {

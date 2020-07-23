@@ -1,3 +1,56 @@
+# Crime-Zero-Client
+
+## Setup
+
+    1. Clone Project.
+    ```
+    $ git clone git@github.com:seerviashish/crime-zero.git
+
+    cd crime-zero/client
+    ```
+
+    2. Run yarn to install dependancy.
+    ```
+    $ yarn
+    ```
+
+    3. To start project.
+    ```
+    $ yarn start
+    ```
+
+    4. To build project.
+    ```
+    $ yarn build
+    ```
+
+    5. To test project.
+    ```
+    $ yarn test
+    ```
+
+### Project RUN [Important]
+
+    - Image URL = https://hub.docker.com/repository/docker/seerviashish17/crime-zero-client
+
+    - docker push seerviashish17/crime-zero-client:v1.0.0
+    - docker-compose up -d
+
+    - From Docker image
+    ```
+    $ ./run
+    ```
+
+    - Build Local and Run
+    ```
+    $ ./setup-local
+    ```
+
+    - Build docker image local
+    ```
+    $ ./setup-docker
+    ```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
