@@ -15,17 +15,24 @@ router.get('/hero', async (req, res) => {
       const {code} = req.query;
       if (code && isCodeValid(code)) {
         winston.debug(`Request query param => ${req.query.code}`);
-        await getHeroName(code);
-        res.status(200).send({code});
+        const heroName = getHeroName(code);
+        winston.debug(
+          `Hero name ==> ${heroName} for client Id ==> ${clientId}`
+        );
+        if (heroName) {
+          res.status(200).send({hero: heroName});
+        } else {
+          throw Error('Hero not found with this code.');
+        }
       } else {
-        throw new Error('Query param code is not valid');
+        throw new Error('Query param code is not valid.');
       }
     } else {
       throw new Error('Header client id not found.');
     }
   } catch (error) {
     winston.error(`Get Hero Error: ${error}`);
-    res.status(403).send({error});
+    res.status(403).send({error: String(error.message)});
   }
 });
 
