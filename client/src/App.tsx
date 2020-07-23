@@ -74,7 +74,7 @@ class App extends React.Component<Props, State> {
   };
 
   validateSmsCode = (sms: string): boolean => {
-    let match = sms.match(/(0 )[2-9]+/g);
+    let match = sms.match(/(0 )[2-9]+$/g);
     if (match && match.length > 0) {
       let output: string = match.join("").toString();
       return output === sms;
@@ -116,6 +116,11 @@ class App extends React.Component<Props, State> {
           if (!heroJson || (heroJson && !heroJson.hero)) {
             throw new Error("No hero found");
           }
+          this.state.messageList.forEach((state) => {
+            if (state.id === maxId + 1) {
+              state.status = 1;
+            }
+          });
           const heroMessage = {
             id: maxId + 2,
             message: heroJson.hero,
@@ -126,6 +131,11 @@ class App extends React.Component<Props, State> {
             messageList: [...this.state.messageList, heroMessage],
           });
         } else {
+          this.state.messageList.forEach((state) => {
+            if (state.id === maxId + 1) {
+              state.status = 2;
+            }
+          });
           throw new Error(
             heroJson && heroJson.error ? heroJson.error : "Response Error"
           );
