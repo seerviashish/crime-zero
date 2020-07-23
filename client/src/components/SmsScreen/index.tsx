@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, useEffect, useRef } from "react";
 import Done from "../../assets/done-24px.svg";
 import DoneAll from "../../assets/done_all-24px.svg";
 import SmsError from "../../assets/error-24px.svg";
@@ -19,6 +19,14 @@ const SmsScreen: React.FC<Props> = ({
   messageList,
   sendBtn,
 }) => {
+  const smsListViewRef = useRef<HTMLLIElement>(null);
+  useEffect(() => {
+    if (smsListViewRef && smsListViewRef.current) {
+      smsListViewRef.current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  }, [messageList]);
   return (
     <div className="SmsScreen" style={{ ...style }}>
       <div className="SmsListView">
@@ -26,6 +34,7 @@ const SmsScreen: React.FC<Props> = ({
           {messageList.map((message, index) => {
             return (
               <li
+                ref={smsListViewRef}
                 key={`${message.id}-${index}-msg`}
                 style={{
                   float: message.sentBy === 0 ? "right" : "left",
