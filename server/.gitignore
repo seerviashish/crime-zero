@@ -4,3 +4,4 @@ logs
 .pm2
 *.logs
 yarn.lock
+coverage

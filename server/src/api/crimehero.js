@@ -4,9 +4,9 @@ const config = require('../config');
 const {getHeroName, isCodeValid} = require('../service');
 const winston = require('./../logger/winston');
 
-router.get('/status', (req, res) => res.send({status: 'UP'}));
+router.get(/^\/status$/g, (req, res) => res.send({status: 'UP'}));
 
-router.get('/hero', async (req, res) => {
+router.get(/^\/hero/g, async (req, res) => {
   try {
     const clientId = req.headers['x-client-id'];
     if (clientId && config.clientId.includes(clientId)) {

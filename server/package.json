@@ -27,10 +27,19 @@
     "start": "nodemon ./src/app.js",
     "pre-commit": "echo 'TODO: TESTING'",
     "commit": "git-cz",
-    "pm2:start": "yarn pm2 start ecosystem.config.js"
+    "pm2:start": "yarn pm2 start ecosystem.config.js",
+    "test": "jest --watch --coverage"
   },
   "devDependencies": {
+    "jest": "^26.1.0",
+    "supertest": "^4.0.2",
     "winston": "^3.2.1",
     "winston-daily-rotate-file": "^4.4.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }
