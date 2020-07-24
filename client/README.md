@@ -29,10 +29,23 @@
     $ yarn test
     ```
 
+## Using docker image setup client as container
+
+    1. Go to client as root
+    ```
+    $ cd crime-zero/client
+    ```
+
+    2. Run docker-compose up -d or ./run script
+    ```
+    $ docker-compose up -d
+    ```
+
 ### Project RUN [Important]
 
     - Image URL = https://hub.docker.com/repository/docker/seerviashish17/crime-zero-client
 
+    [Note: Below For Developer Only]
     - docker push seerviashish17/crime-zero-client:v1.0.0
     - docker-compose up -d
 
@@ -50,6 +63,7 @@
     ```
     $ ./setup-docker
     ```
+    [Note: For Developer Only]
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
