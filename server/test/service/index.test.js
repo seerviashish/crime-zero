@@ -43,8 +43,8 @@ describe('Service Test', () => {
       return expect(getHeroName('0 8467')).toStrictEqual('THOR');
     });
 
-    it('getHeroName(0 84631317) should be <<empty string>>', () => {
-      return expect(getHeroName('0 846337')).toStrictEqual('');
+    it('getHeroName(0 84631317) should be undefined', () => {
+      return expect(getHeroName('0 846337')).toBe(undefined);
     });
   });
 });

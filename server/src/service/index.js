@@ -49,7 +49,6 @@ const getHeroName = code => {
   if (possibleHeros.length > 0) {
     return possibleHeros[0];
   }
-  return '';
 };
 
 const isCodeValid = code => {
