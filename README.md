@@ -21,7 +21,7 @@
 1. design/Crime-Zero.xd
 2. design/clime-zero-ux.mov
 
-## To Setup Project Server & client follow the instruction of readme.md file in client and server derectory
+## To Setup Project Server & client follow the instruction of readme.md file in client and server directory
 
 ## Final Demo
 
